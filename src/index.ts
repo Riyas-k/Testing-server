@@ -44,6 +44,11 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
+
 // Error handling middleware
 app.use(notFound);
 app.use(errorHandler);
