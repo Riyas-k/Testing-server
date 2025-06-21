@@ -45,8 +45,8 @@ app.get('/health', (req, res) => {
 });
 
 // Error handling middleware
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
 // Start server
 const PORT = config.port;
