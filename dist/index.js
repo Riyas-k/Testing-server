@@ -30,8 +30,12 @@ app.use((req, res, next) => {
     next();
 });
 // Routes
+// Mount auth routes at both /api/auth and /auth to support both formats
 app.use('/api/auth', authRoutes_1.default);
+app.use('/auth', authRoutes_1.default); // Add this line to support /auth routes directly
+// Mount note routes at both /api/notes and /notes
 app.use('/api/notes', noteRoutes_1.default);
+app.use('/notes', noteRoutes_1.default); // Add this line to support /notes routes directly
 // Health check route
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok' });

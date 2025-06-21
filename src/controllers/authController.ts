@@ -73,7 +73,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     }
 
     // Generate JWT
-    const token = generateToken(user);
+    const token : any = generateToken(user);
 
     res.json({
       user: {

@@ -8,7 +8,7 @@ export interface UserPayload {
   name: string;
 }
 
-export const generateToken = (user: IUser): string => {
+export const generateToken = (user: any): string => {
   const payload: UserPayload = {
     id: user._id.toString(),
     email: user.email,

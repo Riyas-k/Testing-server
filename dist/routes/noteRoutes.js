@@ -22,7 +22,7 @@ router.get('/:id', noteController_1.getNoteById);
 // @desc    Create a new note
 // @access  Private
 router.post('/', [
-    (0, express_validator_1.body)('title').not().isEmpty().withMessage('Title is required'),
+    (0, express_validator_1.body)('title').optional(),
     (0, express_validator_1.body)('content').optional(),
     (0, express_validator_1.body)('collaborators').optional().isArray()
 ], noteController_1.createNote);

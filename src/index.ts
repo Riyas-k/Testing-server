@@ -35,9 +35,9 @@ app.use((req, res, next) => {
 app.use('/api/auth', authRoutes);
 app.use('/auth', authRoutes); // Add this line to support /auth routes directly
 
-// Mount note routes at both /api/notes and /notes
-app.use('/api/notes', noteRoutes);
-app.use('/notes', noteRoutes); // Add this line to support /notes routes directly
+// // Mount note routes at both /api/notes and /notes
+// app.use('/api/notes', noteRoutes);
+// app.use('/notes', noteRoutes); // Add this line to support /notes routes directly
 
 // Health check route
 app.get('/health', (req, res) => {

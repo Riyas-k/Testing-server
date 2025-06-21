@@ -30,7 +30,7 @@ const register = async (req, res) => {
         });
         await user.save();
         // Generate JWT
-        const token = (0, jwt_1.generateToken)(user);
+        const token  = (0, jwt_1.generateToken)(user);
         res.status(201).json({
             user: {
                 id: user._id,

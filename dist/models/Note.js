@@ -37,7 +37,7 @@ const mongoose_1 = __importStar(require("mongoose"));
 const NoteSchema = new mongoose_1.Schema({
     title: {
         type: String,
-        required: true,
+        // required: true,
         trim: true
     },
     content: {
