@@ -14,6 +14,11 @@ connectDB();
 const app = express();
 const server = http.createServer(app);
 
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
+
 // Setup Socket.IO
 const io = setupSocketIO(server);
 
@@ -44,9 +49,6 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
 
 
 // Error handling middleware
