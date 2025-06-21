@@ -11,6 +11,6 @@ const config = {
     jwtSecret: process.env.JWT_SECRET || 'secret',
     jwtExpire: process.env.JWT_EXPIRE || '30d',
     nodeEnv: process.env.NODE_ENV || 'development',
-    clientURL: process.env.CLIENT_URL || 'http://localhost:3000'
+    clientURL: process.env.CLIENT_URL || 'https://testing-mavens-client-dlvk.vercel.app/'
 };
 exports.default = config;
