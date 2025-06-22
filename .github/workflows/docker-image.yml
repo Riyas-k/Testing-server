@@ -1,0 +1,47 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+    - name: Set up environment variables
+      run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
+
+    - name: Build and tag the client Docker image
+      run: |
+        cd client
+        docker build . --file Dockerfile --tag riyaz/noteapp:latest
+        docker tag riyaz/noteapp-client:latest riyaz/noteapp-client:${{ env.TIMESTAMP }}
+
+    - name: Build and tag the server Docker image
+      run: |
+        cd server
+
+
+    - name: Push the client Docker image
+      run: |
+        docker push riyaz/noteapp-client:latest
+        docker push riyaz/noteapp-client:${{ env.TIMESTAMP }}
+
+    - name: Push the server Docker image
+      run: |
+        docker push riyaz/noteapp-server:latest
+        docker push riyaz/noteapp-server:${{ env.TIMESTAMP }}
